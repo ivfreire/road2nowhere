@@ -1,19 +1,21 @@
 
-div.about > div.info-card {
+div.about div.info-card {
     display: flex;
     flex-direction: row;
 }
 
-div.about > div.info-card > div.profile-pic {
+div.about div.info-card > div.profile-pic {
     background: rgba(0, 0, 0, 0.5);
     text-align: center;
-    border: 1px solid white;
+    border: 2px solid var(--fg-color);
+    border-radius: 5px;
+    overflow: hidden;
 }
 
-div.about > div.info-card ul {
+div.about div.info-card ul {
     list-style-type: none;
 }
 
-div.about > div.info-card ul li {
+div.about div.info-card ul li {
     padding: 5px 0 5px 0;
 }

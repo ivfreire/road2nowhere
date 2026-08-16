@@ -1,9 +1,23 @@
+:root {
+	--bg-color: #0c1427;
+	--3rd-color: #133B5C;
+	--4th-color: #1E5F74;
+	--fg-color: #fce7d1;
+}
+
+/*@font-face {
+    font-family: Papernotes;
+    src: url('/fonts/Papernotes.ttf');
+}*/
+
+/* =================================================== */
+
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #02122b;
-	color: white;
-	font-family: Consolas, monospace;
+	background-color: var(--bg-color);
+	color: var(--fg-color);
+	font-family: Ubuntu;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -32,30 +46,26 @@ div.center-column {
 	min-width: 1000px;
 }
 
-div.content {
+div.center-column > div.content {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	margin-top: 5%;
 }
 
-div.content > div.left {
+div.center-column > div.content > div.left {
 	width: 10%;
 	min-width: 250px;
 }
 
-div.content > div.right {
+div.center-column > div.content > div.right {
 	width: 100%;
 	padding-left: 2vw;
 }
 
-div.footer {
-	width: 100%;
-	border: 1px solid white;
+div.footer, div.header {
 	margin-top: 2vw;
 	margin-bottom: 2vw;
 	text-align: center;
-	box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* =================================================== */
@@ -66,19 +76,42 @@ div.menu > ul {
 
 div.header {
 	text-align: center;
-	border: 1px solid white;
+	border: 1px solid var(--fg-color);
 }
 
 /* =================================================== */
+
+div.window {
+	width: 100%;
+	border: 2px solid var(--fg-color);
+	box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
+	background-color: var(--fg-color);
+	border-radius: 5px;
+}
+
+div.window > div.title {
+	width: 100% - 10px;
+	padding: 5px;
+	background-color: var(--fg-color);
+	color: var(--bg-color);
+	font-weight: bold;
+}
+
+div.window > div.content {
+	display: flex;
+	flex-direction: column;
+	width: 100% - 10px;
+	padding: 32px;
+	background-color: var(--bg-color);
+	border-radius: 5px;
+	overflow: hidden;
+}
 
 div.widgets > div.widget:last-child {
 	margin-bottom: 0;
 }
 
 div.widget {
-	width: 100%;
-	border: 1px solid white;
-	box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
 	margin-bottom: 2vw;
 }
 
@@ -91,9 +124,7 @@ div.elements > div.element:last-child {
 }
 
 div.element {
-	width: 90%;
-	padding: 5%;
-	border: 1px solid white;
-	box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
 	margin-bottom: 2vw;
 }
+
+/* =================================================== */
