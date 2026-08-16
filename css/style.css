@@ -1,8 +1,8 @@
 :root {
-	--bg-color: #0c1427;
+	--bg-color: #030711;
 	--3rd-color: #133B5C;
 	--4th-color: #1E5F74;
-	--fg-color: #fce7d1;
+	--fg-color: #3ff393;
 }
 
 @font-face {
@@ -60,6 +60,10 @@ div.center-column > div.content > div.left {
 div.center-column > div.content > div.right {
 	width: 100%;
 	padding-left: 2vw;
+}
+
+div.center-column > div.content-full {
+	margin-top: 32px;
 }
 
 div.footer, div.header {
@@ -131,6 +135,22 @@ div.elements > div.element:last-child {
 
 div.element {
 	margin-bottom: 2vw;
+}
+
+div.modal-overlay {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1000;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+div.modal-overlay img {
+	max-width: 80vw;
+	max-height: 90vh;
 }
 
 /* =================================================== */
