@@ -74,6 +74,11 @@ div.footer, div.header {
 
 /* =================================================== */
 
+iframe {
+	border: 2px solid var(--fg-color);
+	border-radius: 5px;
+}
+
 div.window {
 	width: 100%;
 	border: 2px solid var(--fg-color);
