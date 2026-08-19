@@ -1,8 +1,10 @@
 :root {
 	--bg-color: #030711;
+	--fg-color: #3ff393;
+	--text-color: #3ff393;
+	--wd-bg-color: #030711;
 	--3rd-color: #133B5C;
 	--4th-color: #1E5F74;
-	--fg-color: #3ff393;
 }
 
 @font-face {
@@ -16,28 +18,39 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: var(--bg-color);
-	color: var(--fg-color);
+	color: var(--text-color);
 	font-family: 'Courier New', Courier, monospace;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-nav.navigation {
-	width: 100%;
+iframe {
+	border: 2px solid var(--fg-color);
+	border-radius: 5px;
 }
 
-header {
-	width: 100%;
+button {
+	cursor: pointer;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	font-weight: bold;
+	padding: 8px 16px 8px 16px;
+	border: 1px solid var(--fg-color);
+	border-radius: 3px;
+	box-shadow: 0 4px 0 var(--fg-color);
+	outline: none;
+	transition: all 200ms;
 }
 
-footer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	padding: 1% 0 1% 0;
+button:active {
+	transform: translateY(4px);
+	box-shadow: 0 0px 0 var(--fg-color);
+	background-color: var(--fg-color);
+	color: var(--bg-color);
 }
+
+/* =================================================== */
 
 div.center-column {
 	display: flex;
@@ -70,33 +83,36 @@ div.footer, div.header {
 	margin-top: 2vw;
 	margin-bottom: 2vw;
 	text-align: center;
+	color: var(--bg-color);
 }
 
 /* =================================================== */
 
-iframe {
-	border: 2px solid var(--fg-color);
-	border-radius: 5px;
+div.banner img {
+	border-radius: 3px;
 }
 
 div.window {
 	width: 100%;
 	border: 2px solid var(--fg-color);
-	box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
 	background-color: var(--fg-color);
-	border-radius: 5px;
-	color: var(--bg-color);
+	border-radius: 5px 5px 0 0;
 }
 
 div.window > div.title {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: left;
 	width: 100% - 10px;
-	padding: 5px;
+	padding: 10px 5px 6px 5px;
 	background-color: var(--fg-color);
 	color: var(--bg-color);
 	font-weight: bold;
+}
+
+div.window > div.title > img {
+	margin-right: 6px;
 }
 
 div.window > div.title > div.controls button.collapse {
@@ -116,11 +132,13 @@ div.window > div.content {
 	flex-direction: column;
 	width: 100% - 10px;
 	padding: 32px;
-	background-color: var(--bg-color);
+	background-color: var(--wd-bg-color);
 	border-radius: 5px;
 	overflow: hidden;
-	color: var(--fg-color);
+	color: var(--text-color);
 }
+
+
 
 div.widgets > div.widget:last-child {
 	margin-bottom: 0;
@@ -130,17 +148,20 @@ div.widget {
 	margin-bottom: 2vw;
 }
 
-div.widget img {
+div.widget div.content img {
 	width: 100%;
+}
+
+
+div.element {
+	margin-bottom: 2vw;
 }
 
 div.elements > div.element:last-child {
 	margin-bottom: 0;
 }
 
-div.element {
-	margin-bottom: 2vw;
-}
+
 
 div.modal-overlay {
 	position: fixed;

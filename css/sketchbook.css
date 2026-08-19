@@ -1,0 +1,31 @@
+
+
+div#flipbook {
+    transform: rotateZ(30deg);
+}
+
+div#flipbook div.turn-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-size: 100% 100%;
+    background-image: url("/images/sketchbook-paper.png");
+}
+
+div#flipbook div.turn-page.hard.front {
+    background-image: url("/images/sketchbook-front.png");
+}
+div#flipbook div.turn-page.hard {
+    background-image: url("/images/sketchbook-cover.png");
+}
+
+div#flipbook img {
+    max-width: 80%;
+    max-height: 80%;
+    transition: transform 250ms;
+}
+
+div#flipbook img:hover {
+    transform: scale(1.1);
+}
