@@ -7,11 +7,6 @@
 	--4th-color: #1E5F74;
 }
 
-@font-face {
-    font-family: Determination;
-    src: url('/fonts/determination.ttf');
-}
-
 /* =================================================== */
 
 body {
