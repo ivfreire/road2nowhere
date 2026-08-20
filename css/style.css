@@ -6,6 +6,13 @@
 	--3rd-color: #133B5C;
 	--4th-color: #1E5F74;
 }
+@keyframes crt-flicker {
+    0%   { opacity: 0.97; }
+    20%  { opacity: 0.92; }
+    45%  { opacity: 0.99; }
+    70%  { opacity: 0.94; }
+    100% { opacity: 0.98; }
+}
 
 /* =================================================== */
 
@@ -21,9 +28,20 @@ body {
 	overflow-x: hidden;
 }
 
+img {
+	position: relative;
+	z-index: 1;
+}
+
+h1,h2,h3,h4,h5,h6,b {
+	text-shadow: 0 0 16px var(--text-color);
+}
+
 iframe {
-	border: 2px solid var(--fg-color);
-	border-radius: 5px;
+	position: relative;
+	z-index: 1;
+	border: 1px solid var(--fg-color);
+	border-radius: 3px;
 }
 
 button {
@@ -85,10 +103,10 @@ div.banner img {
 
 div.window {
 	width: 100%;
-	border: 2px solid var(--fg-color);
+	border: 1px solid var(--fg-color);
 	box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
 	background-color: var(--fg-color);
-	border-radius: 5px 5px 0 0;
+	border-radius: 3px;
 }
 
 div.window > div.title {
@@ -197,3 +215,18 @@ div.menu ul a:hover {
 }
 
 /* =================================================== */
+
+div.crt-screen {
+	content: " ";
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(
+		rgba(0, 255, 0, 0.1) 0.1em,
+		transparent 0.1em
+	);
+	background-size: 100% 0.3em;
+	pointer-events: none;
+	z-index: 0;
+	animation: crt-flicker 300ms infinite;
+}

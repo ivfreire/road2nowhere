@@ -1,6 +1,8 @@
 
 
 div#flipbook {
+    position: relative;
+    z-index: 1;
     transform: rotateZ(30deg);
 }
 
