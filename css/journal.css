@@ -22,3 +22,11 @@ div.post div.title h3 {
     background-color: var(--bg-color);
     z-index: 0;
 }
+
+div.post p:before {
+    content: "- ";
+}
+
+div.post ul li:before {
+    content: "➤ ";
+}

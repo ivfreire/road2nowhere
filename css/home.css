@@ -3,6 +3,25 @@
     100% {transform: scale(1) rotateX(0);}
 }
 
+/* ================================================================ */
+
+div.content-full {
+    margin-top: 32px;
+}
+
+div.header > img {
+    animation: banner-load 300ms ease-in;
+}
+
+div#blinkers img {
+    width: 100%;
+}
+
+div.neighbors ul li:before {
+    content: "➤ ";
+}
+
+/* ================================================================ */
 
 div.about div.info-card {
     display: flex;
@@ -25,17 +44,4 @@ div.about div.info-card ul li {
     padding: 5px 0 5px 0;
 }
 
-
-
-div.content-full {
-    margin-top: 32px;
-}
-
-div.header > img {
-    animation: banner-load 300ms ease-in;
-}
-
-
-div#blinkers img {
-    width: 100%;
-}
+/* ================================================================ */

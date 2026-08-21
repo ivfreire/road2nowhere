@@ -9,6 +9,10 @@
 
 /* =================================================== */
 
+* {
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -27,12 +31,25 @@ img {
 	z-index: 1;
 }
 
+a {
+	text-decoration: none;
+	color: var(--text-color);
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 h1,h2,h3,h4,h5,h6,b,p {
 	text-shadow: 4px 3px 0 rgba(255, 255, 255, 0.1);
 }
 
 p, ul {
 	line-height: 20px;
+}
+
+ul {
+	list-style-type: none;
 }
 
 iframe {
@@ -67,24 +84,26 @@ button:active {
 div.center-column {
 	display: flex;
 	flex-direction: column;
-	width: 50%;
+	width: 70vw;
 	min-width: 1000px;
 }
 
 div.center-column > div.content {
 	display: flex;
+	width: 100%;
 	flex-direction: row;
-	width: 100%;
 }
 
-div.center-column > div.content > div.left {
-	width: 10%;
-	min-width: 250px;
+div.center-column > div.content > div.sidebar, div.center-column > div.content > div.left {
+	flex-shrink: 0;
+	width: 25%;
+	&:nth-child(1) { padding-right: 32px; } 
+  	&:nth-child(3) { padding-left: 32px; }
 }
 
-div.center-column > div.content > div.right {
-	width: 100%;
-	padding-left: 2vw;
+div.center-column > div.content > div.center, div.center-column > div.content > div.right {
+	width: 50%;
+	flex-grow: 1;
 }
 
 div.footer, div.header {
@@ -96,6 +115,7 @@ div.footer, div.header {
 /* =================================================== */
 
 div.banner img {
+	width: 100%;
 	border-radius: 0px;
 }
 
