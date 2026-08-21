@@ -10,6 +10,7 @@ div.content-full {
 }
 
 div.header > img {
+    width: 100%;
     animation: banner-load 300ms ease-in;
 }
 

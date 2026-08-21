@@ -1,7 +1,12 @@
 
+div.journal {
+    display: flex;
+    flex-direction: column-reverse;
+}
 
 div.post div.title {
     position: relative;
+    cursor: pointer;
 }
 
 
@@ -23,10 +28,18 @@ div.post div.title h3 {
     z-index: 0;
 }
 
+
 div.post p:before {
     content: "- ";
 }
 
 div.post ul li:before {
     content: "➤ ";
+}
+
+div.post > div.body {
+    display: none;
+}
+div.post:last-of-type > div.body {
+    display: block;
 }

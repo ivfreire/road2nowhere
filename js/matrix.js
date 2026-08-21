@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 
 const Background = {
     maxParticles: 200,
-    particleWidth: 14,
+    particleWidth: 10,
     particleHeight: 14,
     particles: [],
 
@@ -32,8 +32,6 @@ const Background = {
     },
 
     render: function(ctx) {
-        console.log("asd");
-
         ctx.fillStyle = "rgba(3, 7, 17, 0.2)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -54,8 +52,6 @@ const Background = {
 
             p[0] += Background.particleWidth * d[0];
             p[1] += Background.particleHeight * d[1];
-
-            console.log(p);
 
             // Move out-of-sight partibles back to the screen
             if (p[1] < 0) p[1] += canvas.height;
@@ -82,7 +78,7 @@ window.onload = function() {
 
     Background.deltaMove = (t, p) => [
         - 0.2 * Math.cos(Math.PI * p[0] / canvas.width) * Math.cos(Math.PI * p[1] / canvas.height),
-        1
+        0.8
     ];
 
     setInterval(
