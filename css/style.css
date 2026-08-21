@@ -7,14 +7,6 @@
 	--4th-color: #1E5F74;
 }
 
-@keyframes crt-flicker {
-    0%   { opacity: 0.97; }
-    20%  { opacity: 0.92; }
-    45%  { opacity: 0.99; }
-    70%  { opacity: 0.94; }
-    100% { opacity: 0.98; }
-}
-
 /* =================================================== */
 
 body {
@@ -233,11 +225,14 @@ div.crt-screen {
 	background-size: 100% 0.3em;
 	pointer-events: none;
 	z-index: 0;
-	animation: crt-flicker 300ms infinite;
+	opacity: 0.6;
 }
 
 canvas#background {
 	position: fixed;
+	opacity: 0.6;
+	z-index: -5;
 }
+
 
 /* =================================================== */
