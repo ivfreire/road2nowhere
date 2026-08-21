@@ -1,0 +1,24 @@
+
+
+div.post div.title {
+    position: relative;
+}
+
+
+div.post div.title > div {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 50%;
+    border-top: 2px solid var(--text-color);
+    z-index: -1;
+}
+
+div.post div.title h3 {
+    position: relative;
+    display: inline-block;
+    margin-left: 32px;
+    padding: 0 16px;
+    background-color: var(--bg-color);
+    z-index: 0;
+}

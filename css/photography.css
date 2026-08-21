@@ -21,6 +21,8 @@ div#albums div.album {
 
 div#albums div.album:hover div.cover {
     transform: translateY(-8px);
+    position: relative;
+    z-index: 1;
 }
 
 div#albums div.cover {
@@ -36,8 +38,8 @@ div#albums div.cover > div {
     width: 200px;
     height: 200px;
     overflow: hidden;
-    border: 3px solid var(--fg-color);
-    border-radius: 3px;
+    border: 1px solid var(--fg-color);
+    border-radius: 0px;
 }
 
 div#albums div.cover > div img {
@@ -68,11 +70,16 @@ div.image-gallery {
     justify-content: space-between;
 }
 
-
 div.image-gallery div.column {
     width: 33%;
 }
 
 div.image-gallery div.column img {
     width: 100%;
+}
+
+/* =================================================== */
+
+div.content-full {
+    margin-top: 32px;
 }

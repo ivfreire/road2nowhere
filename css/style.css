@@ -6,6 +6,7 @@
 	--3rd-color: #133B5C;
 	--4th-color: #1E5F74;
 }
+
 @keyframes crt-flicker {
     0%   { opacity: 0.97; }
     20%  { opacity: 0.92; }
@@ -21,11 +22,12 @@ body {
 	padding: 0;
 	background-color: var(--bg-color);
 	color: var(--text-color);
-	font-family: 'Courier New', Courier, monospace;
+	font-family: monospace;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	overflow-x: hidden;
+	image-rendering: pixelated;
 }
 
 img {
@@ -33,8 +35,12 @@ img {
 	z-index: 1;
 }
 
-h1,h2,h3,h4,h5,h6,b {
-	text-shadow: 0 0 16px var(--text-color);
+h1,h2,h3,h4,h5,h6,b,p {
+	text-shadow: 4px 3px 0 rgba(255, 255, 255, 0.1);
+}
+
+p, ul {
+	line-height: 20px;
 }
 
 iframe {
@@ -92,21 +98,20 @@ div.center-column > div.content > div.right {
 div.footer, div.header {
 	margin: 32px 0;
 	text-align: center;
-	color: var(--bg-color);
+	color: var(--text-color);
 }
 
 /* =================================================== */
 
 div.banner img {
-	border-radius: 3px;
+	border-radius: 0px;
 }
 
 div.window {
 	width: 100%;
 	border: 1px solid var(--fg-color);
-	box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
-	background-color: var(--fg-color);
-	border-radius: 3px;
+	box-shadow: 5px 5px rgba(0, 0, 0, 1);
+	background-color: var(--bg-color);
 }
 
 div.window > div.title {
@@ -115,8 +120,9 @@ div.window > div.title {
 	justify-content: left;
 	width: 100% - 10px;
 	padding: 10px 5px 6px 5px;
-	background-color: var(--fg-color);
-	color: var(--bg-color);
+	background-color: var(--bg-color);
+	border-bottom: 1px solid var(--fg-color);
+	color: var(--text-color);
 	font-weight: bold;
 }
 
@@ -142,7 +148,6 @@ div.window > div.content {
 	width: 100% - 10px;
 	padding: 32px;
 	background-color: var(--wd-bg-color);
-	border-radius: 5px;
 	overflow: hidden;
 	color: var(--text-color);
 }
@@ -230,3 +235,9 @@ div.crt-screen {
 	z-index: 0;
 	animation: crt-flicker 300ms infinite;
 }
+
+canvas#background {
+	position: fixed;
+}
+
+/* =================================================== */
