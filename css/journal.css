@@ -28,6 +28,9 @@ div.post div.title h3 {
     z-index: 0;
 }
 
+div.post a::before {
+    content: "🔗";
+}
 
 div.post p:before {
     content: "- ";
@@ -42,4 +45,14 @@ div.post > div.body {
 }
 div.post:last-of-type > div.body {
     display: block;
+}
+
+div.image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+div.image img {
+    width: 50%;
 }
