@@ -76,6 +76,17 @@
 			<div class="content-full"></div>
 			<div class="footer window"><p>The very end.</p></div>
 		</div>
+		<div class="message window" id="message-writer">
+			<div class="title"><b>leave your message</b><i class="fa-solid fa-xmark" id="close"></i></div>
+			<div class="content">
+				<input type="text" id="username" placeholder="username (optional)">
+				<input type="text" id="url" placeholder="website URL (optional)">
+				<textarea name="message" id="message" placeholder="suggestions? thoughts?"></textarea>
+				<input type="button" id="send" value="send">
+				<span id="status"></span>
+			</div>
+		</div>
+		<div class="messages"></div>
 		<div class="crt-screen"></div>
 		<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 		<script src="https://kit.fontawesome.com/b856aba706.js" crossorigin="anonymous"></script>
