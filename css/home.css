@@ -14,10 +14,6 @@ div.header > img {
     animation: banner-load 300ms ease-in;
 }
 
-div#blinkers img {
-    width: 100%;
-}
-
 div.neighbors ul li:before {
     content: "➤ ";
 }
@@ -26,14 +22,19 @@ div.neighbors ul li:before {
 
 div.about div.info-card {
     display: flex;
+    flex-direction: column;
+}
+
+div.about div.info-card > div {
+    display: flex;
     flex-direction: row;
 }
 
-div.about div.info-card > div.profile-pic {
+div.about div.info-card div.profile-pic {
     text-align: center;
 }
 
-div.about div.info-card > div.profile-pic img {
+div.about div.info-card div.profile-pic img {
     border-radius: 3px;
 }
 
@@ -44,5 +45,20 @@ div.about div.info-card ul {
 div.about div.info-card ul li {
     padding: 5px 0 5px 0;
 }
+div.about div.info-card ul li:before {
+    content: "➤ ";
+}
+
+div#blinkers {
+    width: 100%;
+    display: inline-table;
+    margin-top: 32px;
+}
+
+
+div#blinkers img {
+    height: 22px;
+}
+
 
 /* ================================================================ */

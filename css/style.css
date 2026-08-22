@@ -5,12 +5,15 @@
 	--wd-bg-color: #030711;
 	--3rd-color: #133B5C;
 	--4th-color: #1E5F74;
+	--op-color: orangered;
 }
 
 /* =================================================== */
 
 * {
 	box-sizing: border-box;
+	scrollbar-color: var(--fg-color) var(--bg-color);
+	scrollbar-width: thin;
 }
 
 body {
@@ -28,7 +31,7 @@ body {
 
 img {
 	position: relative;
-	z-index: 1;
+	z-index: 10;
 }
 
 a {
@@ -52,9 +55,13 @@ ul {
 	list-style-type: none;
 }
 
+img {
+	max-width: 100%;
+}
+
 iframe {
 	position: relative;
-	z-index: 1;
+	z-index: 10;
 	border: 1px solid var(--fg-color);
 	border-radius: 3px;
 }
@@ -77,6 +84,17 @@ button:active {
 	box-shadow: 0 0px 0 var(--fg-color);
 	background-color: var(--fg-color);
 	color: var(--bg-color);
+}
+
+input, textarea {
+	margin: 4px;
+	background-color: rgba(255, 255, 255, 0.05);
+	padding: 4px;
+	border: none;
+	outline: none;
+	color: var(--text-color);
+	border-radius: 4px;
+	transition: all 200ms;
 }
 
 /* =================================================== */
@@ -235,6 +253,101 @@ div.menu ul a:hover {
 
 /* =================================================== */
 
+div.messages {
+	position: absolute;
+	width: 100vw;
+}
+
+div.message {
+	position: absolute;
+	max-width: 260px;
+	border-color: var(--op-color);
+	color: var(--op-color);
+	z-index: 15;
+	cursor: grab;
+}
+
+div.message div.title {
+	border-color: var(--op-color);
+	color: var(--op-color);
+}
+
+div.message div.title #close {
+	position: absolute;
+	right: 6px;
+	top: 6px;
+	padding: 4px 2px;
+	background-color: transparent;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+
+div.message div.title #close:hover {
+	background-color: var(--op-color);
+	color: var(--wd-bg-color);
+}
+
+div.message div.content {
+	padding: 16px 16px;
+}
+
+div.message p, div.message b, div.message a {
+	color: var(--op-color);
+	margin: 0;
+}
+
+div.message span {
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 8px;
+}
+
+div.message input, div.message textarea {
+	color: var(--op-color);
+}
+
+div.message div.body {
+	padding-top: 4px;
+	margin: 4px 0;
+	border-top: 1px dotted var(--op-color);
+}
+
+
+
+
+div#message-writer {
+	top: 48%;
+	left: 5%;
+	z-index: 16;
+}
+
+div#message-writer input#username {
+	font-weight: bold;
+}
+
+div#message-writer input[type=button] {
+	cursor: pointer;
+	border: 1px solid var(--op-color);
+	font-weight: bold;
+}
+
+div#message-writer input[type=button]:hover {
+	background-color: var(--op-color);
+	color: var(--wd-bg-color);
+}
+
+div#message-writer textarea {
+	height: 100px;
+}
+
+div#message-writer span {
+	margin-top: 4px;
+	font-size: 12px;
+	text-align: center;
+}
+
+/* =================================================== */
+
 div.crt-screen {
 	position: fixed;
 	width: 100%;
@@ -245,7 +358,7 @@ div.crt-screen {
 	);
 	background-size: 100% 0.3em;
 	pointer-events: none;
-	z-index: 0;
+	z-index: 5;
 	opacity: 0.6;
 }
 

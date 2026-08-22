@@ -31,6 +31,7 @@
 							<div class="title">frog.jpg</div>
 							<div class="content" style="padding: 0; width: 100%;"><img src="/images/frog.jpg"></div>
 						</div>
+						
 					</div>
 				</div>
 				<div class="center">
@@ -43,9 +44,6 @@
 									<p>It's all about the journey!</p>
 									<p>Welcome to my corner of the web. I am posting my sketches, photos, code, thoughts and, naturally, a bit of myself here. Feel free to explore every corner and reach out to me if you find anything that sparkles your interest.</p>
 									<p>You are welcome to use any resource in this website in yours. Would appreciate even more if you link back to me.</p>
-								</div>
-								<div style="text-align: center;">
-									<a href="https://github.com/ivfreire/road2nowhere" target="_blank"><img src="/images/stamps/github.gif"></a>
 								</div>
 							</div>
 						</div>
@@ -105,12 +103,27 @@
 					</div>
 				</div>
 			</div>
-			<div class="footer window"><p>No AI-generated content!</p></div>
+			<div class="footer">
+				<p><a href="https://github.com/ivfreire/road2nowhere" target="_blank"><img src="/images/stamps/github.gif"></a></p>
+			</div>
 		</div>
+		<div class="message window" id="message-writer">
+			<div class="title"><b>leave your message</b><i class="fa-solid fa-xmark" id="close"></i></div>
+			<div class="content">
+				<input type="text" id="username" placeholder="username (optional)">
+				<input type="text" id="url" placeholder="website URL (optional)">
+				<textarea name="message" id="message" placeholder="suggestions? thoughts?"></textarea>
+				<input type="button" id="send" value="send">
+				<span id="status"></span>
+			</div>
+		</div>
+		<div class="messages"></div>
 		<canvas id="background"></canvas>
 		<div class="crt-screen"></div>
+		<script src="https://kit.fontawesome.com/b856aba706.js" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
 		<script src="/js/main.js"></script>
 		<script src="/js/matrix.js"></script>
-		<script src="https://kit.fontawesome.com/b856aba706.js" crossorigin="anonymous"></script>
 	</body>
 </html>

@@ -27,16 +27,6 @@
 								</ul>
 							</div>
 						</div>
-						<div class="widget">
-							<div id="blinkers">
-								<img src="/images/blinkers/broken.gif">
-								<img src="/images/blinkers/lgbtqia.gif">
-								<img src="/images/blinkers/rainbow2.gif">
-								<img src="/images/blinkers/sum1uknowigay.gif">
-								<img src="/images/blinkers/htmljunkie.gif">
-								<img src="/images/blinkers/hand_coded.gif">
-							</div>
-						</div>
 					</div>
 				</div>
 				<div class="right">
@@ -45,20 +35,30 @@
 							<div class="title">about me</div>
 							<div class="content">
 								<div class="info-card">
-									<div class="profile-pic">
-										<img src="/images/profile.gif" alt="">
-										<p><b>Kayaba</b></p>
+									<div>
+										<div class="profile-pic">
+											<img src="/images/profile.gif" alt="">
+											<p><b>Kayaba</b></p>
+										</div>
+										<ul>
+											<li><b>Age:</b> nearly 25 (Sept. 13th)</li>
+											<li><b>Hometown:</b> São Paulo</li>
+											<li><b>Occupation:</b> Data Engineer</li>
+											<li><b>College:</b> Physics & Astronomy</li>
+											<li><b>Languages:</b> Portuguese, English</li>
+											<li><b>Favourite foods:</b> Lasagna, Pizza, and Spaghetti (Italyyy)</li>
+											<li><b>Zodiac:</b> Virgo</li>
+											<li><b>Interests:</b> Drawing, Computing, Retrogaming, Science</li>
+										</ul>
 									</div>
-									<ul>
-										<li><b>Age:</b> nearly 25 (Sept. 13th)</li>
-										<li><b>Hometown:</b> São Paulo</li>
-										<li><b>Occupation:</b> Data Engineer</li>
-										<li><b>College:</b> Physics & Astronomy</li>
-										<li><b>Languages:</b> Portuguese, English</li>
-										<li><b>Favourite foods:</b> Lasagna, Pizza, and Spaghetti (Italyyy)</li>
-										<li><b>Zodiac:</b> Virgo</li>
-										<li><b>Interests:</b> Drawing, Computing, Retrogaming, Science</li>
-									</ul>
+									<div id="blinkers">
+										<img src="/images/blinkers/broken.gif">
+										<img src="/images/blinkers/lgbtqia.gif">
+										<img src="/images/blinkers/rainbow2.gif">
+										<img src="/images/blinkers/sum1uknowigay.gif">
+										<img src="/images/blinkers/htmljunkie.gif">
+										<img src="/images/blinkers/hand_coded.gif">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -66,7 +66,22 @@
 							<div class="content">
 								<p>I am an art and tech enthusiast interested in sharing cool stuff (at least stuff I think is cool :P) I've done (or I've been learning about) with the world!</p>
 								<p>Recently, I've grown sick of traditional social networking platforms and AI-generated content. I want a place where I can really express myself... where it doesn't matter how many likes I get.</p>
-								<p>Anyways, feel free to explore and reach out to me if you see anything that sparkles your interest!</p>
+							</div>
+						</div>
+						<div class="element">
+							<div class="title"><h3>computing</h3></div>
+							<div class="content">
+								<p>I used to run Arch Linux back in the college days, it was amazingly fun and I learned a ton about Linux using it. However, since I landed a full-time job I've decided to switch to a more stable distro: Ubuntu. I am looking forward to distro-hopping in the very near future though.</p>
+							</div>
+						</div>
+						<div class="element">
+							<div class="title"><h3>gaming</h3></div>
+							<div class="content">
+								<p>I haven't had much time for gaming lately, but when I do I usually place souls-like titles or retro/older games.</p>
+								<p>My profile on PSN is <b>KayabaAkihito</b>. If you play on PlayStation let's be friends!</p>
+								<a href="https://psnprofiles.com/KayabaAkihito" target="_blank">
+									<img src="https://card.psnprofiles.com/1/KayabaAkihito.png" style="image-rendering: auto;">
+								</a>
 							</div>
 						</div>
 					</div>
@@ -74,8 +89,20 @@
 			</div>
 			<div class="footer"></div>
 		</div>
+		<div class="message window" id="message-writer">
+			<div class="title"><b>leave your message</b><i class="fa-solid fa-xmark" id="close"></i></div>
+			<div class="content">
+				<input type="text" id="username" placeholder="username (optional)">
+				<input type="text" id="url" placeholder="website URL (optional)">
+				<textarea name="message" id="message" placeholder="suggestions? thoughts?"></textarea>
+				<input type="button" id="send" value="send">
+			</div>
+		</div>
+		<div class="messages"></div>
 		<div class="crt-screen"></div>
-		<script src="/js/main.js"></script>
+		<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
 		<script src="https://kit.fontawesome.com/b856aba706.js" crossorigin="anonymous"></script>
+		<script src="/js/main.js"></script>
 	</body>
 </html>

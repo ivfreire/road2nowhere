@@ -1,4 +1,7 @@
 
+* {
+    image-rendering: auto;
+}
 
 div#flipbook {
     position: relative;

@@ -1,3 +1,7 @@
+* {
+    image-rendering: auto;
+}
+
 div.albums div.title {
     margin-bottom: 32px;
 }
@@ -22,7 +26,7 @@ div#albums div.album {
 div#albums div.album:hover div.cover {
     transform: translateY(-8px);
     position: relative;
-    z-index: 1;
+    z-index: 10;
 }
 
 div#albums div.cover {
