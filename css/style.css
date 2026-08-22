@@ -255,6 +255,7 @@ div.menu ul a:hover {
 
 div.messages {
 	position: absolute;
+	display: none;
 	width: 100vw;
 }
 
@@ -313,11 +314,9 @@ div.message div.body {
 }
 
 
-
-
 div#message-writer {
-	top: 48%;
-	left: 5%;
+	top: 48vh;
+	left: 5vw;
 	z-index: 16;
 }
 
