@@ -110,7 +110,7 @@ $("div.messages").ready(function() {
                     $urlRow.append(document.createTextNode(m.url));
                 }
 
-                $urlRow.appendTo($content);
+                if (m.url) $urlRow.appendTo($content);
 
                 $("<div>")
                     .addClass("body")
