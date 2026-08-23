@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Solar System</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        body {background-color: grey;}
+        canvas {background-color: black;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        let dtime = 1;
+        let c = [0, 0, 0];
+        let v = [];
+        let vh = 500;
+        let G = 100;
+
+        const Sim = {
+            FPS: 24,
+
+            maxParticles: 1000,
+            particleSize: 20,
+            particles: [],
+
+
+            matrixColor: "rgb(63, 243, 147)",
+            characters: "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん",
+
+            field: function(p) {
+                const v0 = 1000;
+
+                const rx = p[0] - c[0];
+                const ry = p[1] - c[1];
+                const rz = p[2] - c[2];
+
+                const ax = 0;
+                const ay = -Math.cos(Math.PI / 6);
+                const az = Math.sin(Math.PI / 6);
+
+                const tx = ay * rz - az * ry;
+                const ty = az * rx - ax * rz;
+                const tz = ax * ry - ay * rx;
+
+                const t = Math.hypot(tx, ty, tz);
+
+                if (t === 0) return [0, 0, 0];
+
+                return [
+                    v0 * tx / t,
+                    v0 * ty / t,
+                    v0 * tz / t,
+                ];
+            },
+
+            initParticles: function() {
+                for (let i = 0; i < Sim.maxParticles; i++) {
+                    Sim.particles.push([
+                        Math.floor((Math.random() - 0.5) * 1000),
+                        Math.floor((Math.random() - 0.5) * 100),
+                        Math.floor((Math.random() - 0.5) * 100),
+                    ])
+                }
+            },
+
+            render: function(ctx) {
+                ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+                ctx.fillRect(-canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
+
+                ctx.fillStyle = Sim.matrixColor;
+                Sim.particles.forEach((p) => {
+                    let dist_v = Math.sqrt(
+                        Math.pow(p[0] - v[0], 2) +
+                        Math.pow(p[1] - v[1], 2) +
+                        Math.pow(p[2] - v[2], 2)
+                    );
+
+                    let dist_c = Math.sqrt(
+                        Math.pow(p[0] - c[0], 2) +
+                        Math.pow(p[1] - c[1], 2) +
+                        Math.pow(p[2] - c[2], 2)
+                    );
+
+                    ctx.fillStyle = `rgb(0, ${Math.floor(255 * Math.exp(-1 * dist_c / 800))}, 0)`;
+
+                    ctx.font = `${Math.floor(Sim.particleSize * vh / dist_v)}px sans-serif`;
+                    
+                    ctx.fillText(
+                        Sim.characters[Math.floor(Math.random() * Sim.characters.length)],
+                        (p[0] - v[0]) * vh / dist_v,
+                        (p[1] - v[1]) * vh / dist_v
+                    );
+
+                    // Update particle
+                    let d = Sim.field(p);
+                    
+                    p[0] += d[0] * dtime * G / dist_c;
+                    p[1] += d[1] * dtime * G / dist_c;
+                    p[2] += d[2] * dtime * G / dist_c;
+                });
+
+                G += 10*dtime;
+            }
+        }
+
+        window.onload = function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+
+            dtime = 1.0 / Sim.FPS;
+            
+            v = [0, 0, 1000];
+
+            Sim.initParticles();
+
+            setInterval(Sim.render, Sim.FPS, ctx)
+        }
+    </script>
+</body>
+</html>

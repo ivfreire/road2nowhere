@@ -75,10 +75,11 @@ div.image-gallery {
 }
 
 div.image-gallery div.column {
-    width: 33%;
+    width: 100%;
 }
 
 div.image-gallery div.column img {
+    display: block;
     width: 100%;
 }
 

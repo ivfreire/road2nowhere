@@ -6,6 +6,7 @@
 	--3rd-color: #133B5C;
 	--4th-color: #1E5F74;
 	--op-color: orangered;
+	--std-spacing: 16px;
 }
 
 /* =================================================== */
@@ -115,8 +116,8 @@ div.center-column > div.content {
 div.center-column > div.content > div.sidebar, div.center-column > div.content > div.left {
 	flex-shrink: 0;
 	width: 25%;
-	&:nth-child(1) { padding-right: 32px; } 
-  	&:nth-child(3) { padding-left: 32px; }
+	&:nth-child(1) { padding-right: var(--std-spacing); } 
+  	&:nth-child(3) { padding-left: var(--std-spacing); }
 }
 
 div.center-column > div.content > div.center, div.center-column > div.content > div.right {
@@ -125,7 +126,7 @@ div.center-column > div.content > div.center, div.center-column > div.content > 
 }
 
 div.footer, div.header {
-	margin: 32px 0;
+	margin: var(--std-spacing) 0;
 	text-align: center;
 	color: var(--text-color);
 }
@@ -177,7 +178,7 @@ div.window > div.content {
 	display: flex;
 	flex-direction: column;
 	width: 100% - 10px;
-	padding: 32px;
+	padding: var(--std-spacing);
 	background-color: var(--wd-bg-color);
 	overflow: hidden;
 	border-radius: 0 0 3px 3px;
@@ -191,7 +192,7 @@ div.widgets > div.widget:last-child {
 }
 
 div.widget {
-	margin-bottom: 2vw;
+	margin-bottom: var(--std-spacing);
 }
 
 div.widget div.content img {
@@ -200,16 +201,11 @@ div.widget div.content img {
 
 
 div.element {
-	margin: 32px 0;
+	margin-top: var(--std-spacing);
 }
 div.elements > div.element:first-child {
 	margin-top: 0;
 }
-
-div.elements > div.element:last-child {
-	margin-bottom: 0;
-}
-
 
 
 div.modal-overlay {
@@ -273,18 +269,24 @@ div.message div.title {
 	color: var(--op-color);
 }
 
-div.message div.title #close {
+div.message div.title div.controls {
 	position: absolute;
 	right: 6px;
 	top: 6px;
+}
+
+div.message div.title div.controls > * {
 	padding: 4px 2px;
 	background-color: transparent;
 	border-radius: 3px;
 	cursor: pointer;
 }
 
+div.message div.title div.controls path {
+	pointer-events: none;
+}
 
-div.message div.title #close:hover {
+div.message div.title div.controls > *:hover {
 	background-color: var(--op-color);
 	color: var(--wd-bg-color);
 }
@@ -315,8 +317,8 @@ div.message div.body {
 
 
 div#message-writer {
-	top: 48vh;
-	left: 5vw;
+	top: 50vh;
+	left: 5%;
 	z-index: 16;
 }
 

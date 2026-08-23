@@ -15,8 +15,8 @@ div.header > img {
     image-rendering: auto;
 }
 
-div.neighbors ul li:before {
-    content: "➤ ";
+div#stamps {
+    display: inline-block;
 }
 
 /* ================================================================ */
@@ -56,10 +56,8 @@ div#blinkers {
     margin-top: 32px;
 }
 
-
 div#blinkers img {
     height: 22px;
 }
-
 
 /* ================================================================ */

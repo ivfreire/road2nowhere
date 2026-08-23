@@ -1,5 +1,4 @@
-
-const SERVER = "https://road2nowhere-api-219791393556.southamerica-east1.run.app"; // "http://localhost:3001";
+const SERVER = "https://road2nowhere-api-219791393556.southamerica-east1.run.app";
 
 /* ============================ Utilities ============================ */
 
@@ -51,6 +50,7 @@ localStorage["load_messages"] = localStorage["load_messages"] || 1
 
 if (localStorage["load_messages"] == 1) {
     $("div.messages").show();
+
     $("div#message-writer").draggable();
 
     $("div.messages").ready(function() {
@@ -80,13 +80,24 @@ if (localStorage["load_messages"] == 1) {
                             top: `${y}px`
                         });
 
+                    const $controls = $("<div>")
+                        .addClass("controls")
+                        .append(
+                            $("<i>")
+                                .addClass("fa-solid fa-picture-in-picture")
+                                .attr("id", "toggle")
+                        )
+                        .append(
+                            $("<i>")
+                                .addClass("fa-solid fa-xmark")
+                                .attr("id", "close")
+                        )
+
                     const $title = $("<div>")
                         .addClass("title")
                         .append(
                             $("<b>").text("message"),
-                            $("<i>")
-                                .addClass("fa-solid fa-xmark")
-                                .attr("id", "close")
+                            $controls
                         );
 
                     const $content = $("<div>").addClass("content");
@@ -199,8 +210,13 @@ window.onclick = function(ev) {
 
     // Close messages
     if (target.getAttribute("id") == "close") {
-        let window = $(target.parentElement.parentElement);
+        let window = $(target.parentElement.parentElement.parentElement);
         window.fadeOut();
+    }
+
+    if (target.getAttribute("id") == "toggle") {
+        let window = $(target.parentElement.parentElement.parentElement).find(".content");
+        window.slideToggle();
     }
 }
 
