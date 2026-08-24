@@ -3,6 +3,13 @@
     100% {transform: scale(1) rotateX(0);}
 }
 
+@keyframes message-writer {
+    0% {transform: translateX(0);}
+    25% {transform: translateX(-10px);}
+    75% {transform: translateX(10px);}
+    100% {transform: translateX(0);}
+}
+
 /* ================================================================ */
 
 div.content-full {
@@ -15,8 +22,12 @@ div.header > img {
     image-rendering: auto;
 }
 
-div#stamps {
-    display: inline-block;
+div#message-writer {
+    position: relative;
+    min-width: 100%;
+    top: 0;
+    left: 0;
+    animation: message-writer 200ms 5 ease-out;
 }
 
 /* ================================================================ */
@@ -59,5 +70,10 @@ div#blinkers {
 div#blinkers img {
     height: 22px;
 }
+
+div#stamps {
+    display: inline-block;
+}
+
 
 /* ================================================================ */

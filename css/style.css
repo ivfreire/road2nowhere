@@ -3,6 +3,7 @@
 	--fg-color: #3ff393;
 	--text-color: #3ff393;
 	--wd-bg-color: #030711;
+	--wd-title-bg-color: rgba(63, 243, 147, 0.1);
 	--3rd-color: #133B5C;
 	--4th-color: #1E5F74;
 	--op-color: orangered;
@@ -130,8 +131,9 @@ div.center-column > div.content > div.center, div.center-column > div.content > 
 
 div.footer, div.header {
 	margin: var(--std-spacing) 0;
-	text-align: center;
+	background-color: var(--wd-title-bg-color);
 	color: var(--text-color);
+	text-align: center;
 }
 
 /* =================================================== */
@@ -155,7 +157,7 @@ div.window > div.title {
 	justify-content: left;
 	width: 100% - 10px;
 	padding: 10px 5px 6px 5px;
-	background-color: var(--wd-bg-colo);
+	background-color: var(--wd-title-bg-color);
 	border-bottom: 1px solid var(--fg-color);
 	color: var(--text-color);
 	font-weight: bold;
@@ -269,6 +271,7 @@ div.message {
 
 div.message div.title {
 	border-color: var(--op-color);
+	background-color: rgba(255, 69, 0, 0.1);
 	color: var(--op-color);
 }
 

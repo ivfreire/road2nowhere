@@ -28,6 +28,24 @@
 								</ul>
 							</div>
 						</div>
+						<div class="element">
+							<p><b>Try out the messaging system!</b><br>Drag the dialog around to leave your message wherever you want!</p>
+							<div class="message window" id="message-writer">
+								<div class="title">
+									<b>leave your message</b>
+									<div class="controls">
+										<i class="fa-solid fa-picture-in-picture" id="toggle"></i><i class="fa-solid fa-xmark" id="close"></i>
+									</div>
+								</div>
+								<div class="content">
+									<input type="text" id="username" placeholder="username (optional)">
+									<input type="text" id="url" placeholder="website URL (optional)">
+									<textarea name="message" id="message" placeholder="suggestions? thoughts?"></textarea>
+									<input type="button" id="send" value="send">
+									<span id="status"></span>
+								</div>
+							</div>
+						</div>
 						<div class="element window">
 							<div class="title">frogo.jpg</div>
 							<div class="content" style="padding: 0; width: 100%;"><img src="/images/frog.jpg" class="pixelated"></div>
@@ -64,6 +82,13 @@
 				</div>
 				<div class="sidebar">
 					<div class="elements">
+						<div class="element window">
+							<div class="title">quick thoughts</div>
+							<div class="content">
+								<img src="/images/tmp/purple-vehicle.png">
+								<p>This cool purple car really stood out to me today...<br>people usually own black, white and gray cars nowadays.</p>
+							</div>
+						</div>
 						<div class="element window neighbors">
 							<div class="title">cool places</div>
 							<div class="content" style="padding: 8px;">
@@ -81,13 +106,6 @@
 								</ul>
 							</div>
 						</div>
-						<div class="element window">
-							<div class="title">quick thoughts</div>
-							<div class="content">
-								<img src="/images/tmp/purple-vehicle.png">
-								<p>This cool purple car really stood out to me today...<br>people only have black, white and gray cars nowadays.</p>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -101,21 +119,7 @@
 			</div>
 		</div>
 		<div class="messages">
-			<div class="message window" id="message-writer">
-				<div class="title">
-					<b>leave your message</b>
-					<div class="controls">
-						<i class="fa-solid fa-picture-in-picture" id="toggle"></i><i class="fa-solid fa-xmark" id="close"></i>
-					</div>
-				</div>
-				<div class="content">
-					<input type="text" id="username" placeholder="username (optional)">
-					<input type="text" id="url" placeholder="website URL (optional)">
-					<textarea name="message" id="message" placeholder="suggestions? thoughts?"></textarea>
-					<input type="button" id="send" value="send">
-					<span id="status"></span>
-				</div>
-			</div>
+			
 		</div>
 		<canvas id="background"></canvas>
 		<div class="crt-screen"></div>
