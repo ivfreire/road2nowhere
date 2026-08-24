@@ -27,12 +27,15 @@ body {
 	flex-direction: column;
 	align-items: center;
 	overflow-x: hidden;
-	image-rendering: pixelated;
 }
 
 img {
 	position: relative;
 	z-index: 10;
+}
+
+img.pixelated {
+	image-rendering: pixelated;
 }
 
 a {
@@ -44,7 +47,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-h1,h2,h3,h4,h5,h6,b,p,ul {
+h1,h2,h3,h4,h5,h6,b,p,ul,pre {
 	text-shadow: 4px 3px 0 rgba(255, 255, 255, 0.1);
 }
 
@@ -365,6 +368,7 @@ div.crt-screen {
 
 canvas#background {
 	position: fixed;
+	opacity: 0.3;
 	z-index: -5;
 }
 
