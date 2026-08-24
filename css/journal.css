@@ -1,16 +1,17 @@
 
+/* ==================================================== */
+
 div.journal {
     display: flex;
     flex-direction: column-reverse;
 }
 
-div.post div.title {
+div.archive div.title {
     position: relative;
     cursor: pointer;
 }
 
-
-div.post div.title > div {
+div.archive div.title > div {
     position: absolute;
     top: 50%;
     width: 100%;
@@ -19,7 +20,7 @@ div.post div.title > div {
     z-index: -1;
 }
 
-div.post div.title h3 {
+div.archive div.title h3 {
     position: relative;
     display: inline-block;
     margin-left: 32px;
@@ -28,31 +29,76 @@ div.post div.title h3 {
     z-index: 0;
 }
 
-div.post a::before {
-    content: "🔗";
+div.archive ul {
+    display: flex;
+    flex-direction: column-reverse;
 }
 
-div.post p:before {
+div.archive ul li::before {
     content: "- ";
 }
 
-div.post ul li:before {
-    content: "➤ ";
-}
-
-div.post > div.body {
+div.archive > div.body {
     display: none;
 }
-div.post:last-of-type > div.body {
+
+div.archive:last-of-type > div.body {
     display: block;
 }
 
-div.image {
+/* ==================================================== */
+
+div.center-column.post {
+    width: 50%;
+}
+
+div.center-column.post div.content-full {
+    padding: 32px 0;
+}
+
+div.post div.elements {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div.post div.body {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid var(--text-color);
+}
+
+div.post span {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+div.post h1 {
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--text-color);
+}
+
+div.post p::before {
+    content: "- ";
+}
+
+div.post ul li::before {
+    content: "- ";
+}
+
+div.post div.body a::before {
+    content: "🔗";
+}
+
+div.post div.image {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-div.image img {
+div.post div.image img {
     width: 50%;
 }
+
+
+/* ==================================================== */

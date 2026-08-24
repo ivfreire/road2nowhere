@@ -49,49 +49,13 @@
 							<p><b>Be aware:</b> broken English ahead - no! I won't use AI to correct grammar mistakes or whatever.</p>
 						</div>
 						<div class="element journal">
-							<div class="post">
-								<div class="title"><h3>Firs post! - Aug 20, 2026</h3><div></div></div>
+							<div class="archive">
+								<div class="title"><h3>August 2026</h3><div></div></div>
 								<div class="body">
-									<p>First post!… and I must confess I am not at all sure of what to write about. So, I will throw words aimlessly onto this glassy, shiny screen aaand… lets hope something comes up – preferably intelligible.</p>
-									<p>I’ve discovered Neocities this week, and it’s been so fun exploring the awesome websites people have built in here – at times I felt soo overwhelmed by how ingenious and creative internet folks can be! It does make me feel like I am back to the early 2000s when the internet was more than just scrolling the eternal DOOM feed full of AI-generated slop.</p>
-									<p>Out of FOMO, I had to create my own “webcorner” and publish it to the world. Of course, my content is FAAAR from being interesting to anyone but myself, however it has been such a fun building this – I am not exaggerating when I say I worked all-day-long looking forward to coming back and working on it.</p>
-									<p>There are still a bunch of features I want to implement in here:</p>
 									<ul>
-										<li>Create my own banner/stamps/blinkers etc.</li>
-										<li>Include a section with neighbors (wondering if a galaxy-like thingy would look good)</li>
-										<li>List cool websites I’ve been to and that have inspired me (I need this ASAP, want a quick way of checking others’ pages regularly).</li>
-										<li>Create a special BRASSSIL corner with Portuguese content for my fellow brasileiros.</li>
-										<li>Add a games page somewhere with cool (maybe not so cool) games ideas I have.</li>
-										<li>Make many likely-minded friends along the way (not an implementation, but looking forward to it!)</li>
+										<a href="/journal/posts/2026/08/01-first-post.html"><li>20/08 ● <b>First ever post!</b></li></a>
+										<a href="/journal/posts/2026/08/02-message-system.html"><li>22/08 ● <b>Dark Souls like messaging system for Neocities.</b></li></a>
 									</ul>
-									<p>Since it started, I haven’t been fond of AI or its terrible, sloppy content, so I’m not using it to create anything in this website (by AI, I mean generative AI, LLMs and stuff). As a developer, I think I get my “fair share” of AI every and all day at work, so I really want to get to do my own coding and art here – and this is part of the fun really!</p>
-									<p>About myself atm? It is a hot Thursday night, 10:50pm, and I should’ve gone to the gym about 1h ago. And, I am starving – hopefully, I got prepared food in the fridge.</p>
-									<p>That’s all! I will think of something better to write about next time.</p>
-								</div>
-							</div>
-							<div class="post">
-								<div class="title"><h3>Messaging feature - Aug 22, 2026</h3><div></div></div>
-								<div class="body">
-									<div class="image"><img src="/journal/images/cat_typing.gif"></div>
-									<p>Last Friday was a quiet day at work, so I had time to work on the website. I spent half of the day implementing this new messaging feature, but now I am glad how it turned out. I had to setup a database and an API service – there has been so much time I haven’t done those before that I almost forgot how laborious that is. I got inspiration from the Dark Souls series, where players can see messages left behind by other players in the same spot. Let’s see how people will use it!</p>
-									<p>You may be thinking I had to put some bucks into it to get it working but actually it’s (almost) free. Here’s how it works:</p>
-									<p>Components:</p>
-									<ul>
-										<li>Front-end – hosted in Neocities (potentially free)</li>
-										<li>GCP Cloud Run (CR) service – to serve client requests (free-ish)</li>
-										<li>MongoDB free tier instance hosted on Atlas – storage layer (free)</li>
-									</ul>
-									<p>I used Python + FastAPI to create the API service and it is running on CR – which by itself has a monthly free tier of memory, compute and requests. Actually, even if I exceed the free tier, it is very cheap. Since not a lot of people are visiting my website, I am getting by with 128mb + < 1 CPU.</p>
-									<p>MongoDB also has a free tier with some limitations: 512mb storage + weekly 10GB data transfer. However, that is not going to be a problem for my 2 weekly visitors, LOL.</p>
-									<p>Also, I had to set up some guardrails to protect the service from exploitation. We cannot trust anyone on the internet! Here’s how it is set up:</p>
-									<ul>
-										<li>HTML escaping to prevent XSS attacks.</li>
-										<li>Rate limit capping so people don’t burn up resources.</li>
-										<li>Input sanitization to make sure messages aren’t broken.</li>
-										<li>Client IP collection for blacklisting.</li>
-									</ul>
-									<p>If you are interested in having a look into the source code, it is all available on <a href="https://github.com/ivfreire/road2nowhere-api" target="_blank">github</a>.</p>
-									<p>I think this kind of post is heavily technical, so I may add devlog, personal, etc sections to the journal soon.</p>
 								</div>
 							</div>
 						</div>
