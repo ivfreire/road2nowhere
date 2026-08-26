@@ -9,6 +9,24 @@
 		<link rel="stylesheet" href="/css/sketchbook.css"/>
 	</head>
 	<body>
+		<div class="utilities">
+			<button id="activate-message-writer"><i class="fa-solid fa-comment"></i> leave a comment</button>
+			<div class="message window" id="message-writer">
+				<div class="title">
+					<b>leave your message</b>
+					<div class="controls">
+						<i class="fa-solid fa-picture-in-picture" id="toggle"></i><i class="fa-solid fa-xmark" id="close"></i>
+					</div>
+				</div>
+				<div class="content">
+					<input type="text" id="username" placeholder="username (optional)">
+					<input type="text" id="url" placeholder="website URL (optional)">
+					<textarea name="message" id="message" placeholder="suggestions? thoughts?"></textarea>
+					<input type="button" id="send" value="send">
+					<span id="status"></span>
+				</div>
+			</div>
+		</div>
 		<div class="center-column">
 			<div class="content-full">
 				<div class="elements">
@@ -80,11 +98,13 @@
 			</div>
 			<div class="footer"></div>
 		</div>
+		<div class="messages"></div>
 		<script src="https://kit.fontawesome.com/b856aba706.js" crossorigin="anonymous"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.js"></script> -->
 		<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.js"></script>
 		<script src="/js/main.js"></script>
+		<script src="/js/message.js"></script>
 		<script src="/js/sketchbook.js"></script>
 	</body>
 </html>

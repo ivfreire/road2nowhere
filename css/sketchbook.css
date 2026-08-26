@@ -46,6 +46,40 @@ div.sketches img {
     display: block;
 }
 
+
+div#message-writer {
+    display: none;
+    width: 260px;
+    top: 100px;
+    left: 16px;
+}
+
+button {
+    background-color: transparent;
+    border: 1px solid transparent;
+    box-shadow: 0 5px 0 transparent;
+    backdrop-filter: blur(16px);
+    color: black;
+}
+button svg {color: black;}
+
+button:hover {
+    border: 1px solid black;
+    box-shadow: 0 5px 0 black;
+    color: black;
+}
+
+button:active {
+    box-shadow: 0 0px 0 black;
+    background-color: black;
+    color: white;
+}
+button:active svg{color: white;}
+
+button#activate-message-writer {
+    margin: 16px;
+}
+
 /* ================================================================ */
 
 

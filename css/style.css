@@ -30,6 +30,13 @@ body {
 	overflow-x: hidden;
 }
 
+div.utilities {
+	position: fixed;
+	z-index: 11;
+	left: 0;
+	top: 0;
+}
+
 img {
 	position: relative;
 	z-index: 10;
