@@ -4,14 +4,27 @@ Author: road2nowhere (https://road2nowhere.neocities.org/)
 Created at: 2026-08-26
 ==========================================================
 
-## Summary:
+## Summary
 
-Tool to sync local files to a Neocities site using the
-Neocities API.
+Tool to automatically sync local files to a Neocities site
+using the Neocities API.
 
-Edit the file to suit your case.
+## Usage
 
-## Warnings:
+```sh
+$ python neocities-sync.py
+```
+
+Will prompt for your Neocities sitename and password to
+generate an API key. The API key will be saved in a file
+named .neocities in the current working directory. The script
+will then compare the local files with the remote files on
+your Neocities site and display a summary of the changes.
+
+You will be prompted to confirm before any changes are made
+to your Neocities site.
+
+## Warnings
 
 - The script will save your API key at ./.neocities in the 
 current working directory after the first login. DO NOT
@@ -30,12 +43,10 @@ before running this script.
 ==========================================================
 '''
 
-
+import requests
 import getpass
 import hashlib
 from pathlib import Path
-
-import requests
 
 
 CONFIG_DIR = Path.cwd()
