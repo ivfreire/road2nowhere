@@ -8,10 +8,25 @@
         * {margin: 0; padding: 0;}
         body {background-color: grey;}
         canvas {background-color: black;}
+        div#controls {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.1);
+            bottom: 8px;
+            left: 8px;
+            color: white;
+            padding: 16px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
     <canvas id="canvas"></canvas>
+    <div id="controls">
+        <span>Controls:</span><br><br>
+        <b>Gravity contant: </b><span id="g">0</span><br>
+        <input type="range" name="gravity" id="gravity" max="1000000"><br>
+    </div>
     <script>
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
@@ -19,8 +34,18 @@
         let dtime = 1;
         let c = [0, 0, 0];
         let v = [];
-        let vh = 500;
+        let vh = 600;
         let G = 100;
+        const eps = 10;
+
+        const controls = document.getElementById("controls");
+
+        function update_globals() {
+            G = controls.querySelector("#gravity").value;
+            controls.querySelector("#g").innerHTML = G;
+        }
+
+        controls.onmousemove = update_globals;
 
         const Sim = {
             FPS: 24,
@@ -34,7 +59,7 @@
             characters: "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん",
 
             field: function(p) {
-                const v0 = 1000;
+                const v0 = 100;
 
                 const rx = p[0] - c[0];
                 const ry = p[1] - c[1];
@@ -61,16 +86,31 @@
 
             initParticles: function() {
                 for (let i = 0; i < Sim.maxParticles; i++) {
+                    let x = Math.floor(100 + Math.random() * 1000) * Math.sign(Math.random() - 0.5);
+                    let y = Math.floor((Math.random() - 0.5) * 0);
+                    let z = Math.floor((Math.random() - 0.5) * 0);
+
+                    let dist_c = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
+                    let v0 = Math.sqrt(G / dist_c);
+                    let t = Math.atan(y / x);
+                    let phi = Math.PI / 6;
+
                     Sim.particles.push([
-                        Math.floor((Math.random() - 0.5) * 1000),
-                        Math.floor((Math.random() - 0.5) * 100),
-                        Math.floor((Math.random() - 0.5) * 100),
-                    ])
+                        x, y, z,
+                        
+                        // velocity
+                        0,
+                        -v0 * Math.cos(t) * Math.sign(x) * Math.sin(phi),
+                        -v0 * Math.cos(t) * Math.sign(x) * Math.cos(phi),
+
+                        // Acceleration
+                        0, 0, 0
+                    ]);
                 }
             },
 
             render: function(ctx) {
-                ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+                ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
                 ctx.fillRect(-canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
 
                 ctx.fillStyle = Sim.matrixColor;
@@ -87,8 +127,7 @@
                         Math.pow(p[2] - c[2], 2)
                     );
 
-                    ctx.fillStyle = `rgb(0, ${Math.floor(255 * Math.exp(-1 * dist_c / 800))}, 0)`;
-
+                    ctx.fillStyle = `hsl(${Math.floor((dist_c / 800) * 360) % 360}, 100%, 50%)`;
                     ctx.font = `${Math.floor(Sim.particleSize * vh / dist_v)}px sans-serif`;
                     
                     ctx.fillText(
@@ -97,15 +136,20 @@
                         (p[1] - v[1]) * vh / dist_v
                     );
 
-                    // Update particle
-                    let d = Sim.field(p);
-                    
-                    p[0] += d[0] * dtime * G / dist_c;
-                    p[1] += d[1] * dtime * G / dist_c;
-                    p[2] += d[2] * dtime * G / dist_c;
-                });
+                    let accelMagnitude = G / Math.pow(dist_c + eps, 2);
 
-                G += 10*dtime;
+                    p[6] = -accelMagnitude * (p[0] / dist_c);
+                    p[7] = -accelMagnitude * (p[1] / dist_c);
+                    p[8] = -accelMagnitude * (p[2] / dist_c);
+
+                    p[3] += p[6] * dtime;
+                    p[4] += p[7] * dtime;
+                    p[5] += p[8] * dtime;
+
+                    p[0] += p[3] * dtime;
+                    p[1] += p[4] * dtime;
+                    p[2] += p[5] * dtime;
+                });
             }
         }
 
@@ -120,6 +164,7 @@
             
             v = [0, 0, 1000];
 
+            update_globals();
             Sim.initParticles();
 
             setInterval(Sim.render, Sim.FPS, ctx)

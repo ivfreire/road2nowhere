@@ -131,7 +131,6 @@ div.center-column > div.content > div.center, div.center-column > div.content > 
 
 div.footer, div.header {
 	margin: var(--std-spacing) 0;
-	background-color: var(--wd-title-bg-color);
 	color: var(--text-color);
 	text-align: center;
 }
