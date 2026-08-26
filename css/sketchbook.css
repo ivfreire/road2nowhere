@@ -3,6 +3,40 @@
     image-rendering: auto;
 }
 
+body {
+    height: 200vh;
+    background-color: white;
+    background-size: 40%;
+}
+
+body h1,h2,h3,h4,h5,h6,p,b,i,a {
+    color: black;
+}
+
+div.center-column {
+    width: 100%;
+}
+
+
+div.sketches {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+div.sketches > div {
+    flex-grow: 0;
+    max-width: 30%;
+}
+
+div.sketches img {
+}
+
+/* ================================================================ */
+
+
 div#flipbook {
     position: relative;
     z-index: 10;
