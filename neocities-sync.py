@@ -1,8 +1,38 @@
-#!/usr/bin/env python3
+'''
+==========================================================
+Author: road2nowhere (https://road2nowhere.neocities.org/)
+Created at: 2026-08-26
+==========================================================
+
+## Summary:
+
+Tool to sync local files to a Neocities site using the
+Neocities API.
+
+Edit the file to suit your case.
+
+## Warnings:
+
+- The script will save your API key at ./.neocities in the 
+current working directory after the first login. DO NOT
+publish this file or share it with anyone. Treat it like a
+password.
+
+- The script will automatically create, upload and delete 
+files on your Neocities site after user confirmation. MAKE 
+SURE you have a backup of what is currently on your site 
+before running this script.
+
+## Future improvements:
+
+- Support for syncing partial changes.
+
+==========================================================
+'''
+
 
 import getpass
 import hashlib
-import time
 from pathlib import Path
 
 import requests
@@ -12,12 +42,14 @@ CONFIG_DIR = Path.cwd()
 CONFIG_API = Path(".neocities")
 NEOCITIES_API = "https://neocities.org"
 
+# Folders that will not be synced to Neocities FS.
 ignored_folders = {
     ".git",
     "node_modules",
     "__pycache__",
 }
 
+# Change here the extensions of the files you want to deploy. By default, it includes common web file types.
 allowed_extensions = {
     ".html",
     ".css",
@@ -412,9 +444,6 @@ def upload_files(files, auth_header):
             path,
         )
 
-        if index < total:
-            time.sleep(5)
-
     print()
 
     return upload_results
@@ -459,9 +488,6 @@ def create_directories(local_files, remote_files, auth_header):
                     f"Failed to create directory {path}.",
                 )
             )
-
-        if index < len(directories_to_create) - 1:
-            time.sleep(5)
 
 
 def delete_files(files, auth_header):
