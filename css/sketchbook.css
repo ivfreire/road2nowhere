@@ -17,6 +17,13 @@ div.center-column {
     width: 100%;
 }
 
+div.element.center {
+    text-align: center;
+}
+
+div.header {
+    padding: 64px 0;
+}
 
 div.sketches {
     display: flex;
@@ -27,11 +34,16 @@ div.sketches {
 
 
 div.sketches > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     flex-grow: 0;
     max-width: 30%;
 }
 
 div.sketches img {
+    display: block;
 }
 
 /* ================================================================ */
