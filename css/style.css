@@ -214,8 +214,13 @@ div.widget div.content img {
 div.element {
 	margin-top: var(--std-spacing);
 }
+
 div.elements > div.element:first-child {
 	margin-top: 0;
+}
+
+div.element.center {
+    text-align: center;
 }
 
 
