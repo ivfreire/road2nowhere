@@ -21,8 +21,6 @@ const Background = {
     interval: 1000 / 12,
 
     initParticles: function() {
-        console.log("Initializing particles: ", Background.maxParticles);
-
         for (let i = 0; i < canvas.width / Background.particleWidth; i++) {
             this.particles.push([
                 Background.particleWidth * i,

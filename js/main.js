@@ -1,47 +1,26 @@
-const SERVER = "https://road2nowhere-api-219791393556.southamerica-east1.run.app";
+import { GLOBAL } from "./config.js";
+import { Message } from "./message.js";
 
-/* ============================ Utilities ============================ */
 
-function safeUrl(value) {
-    try {
-        const url = new URL(value);
+window.onload = () => {
+    GLOBAL.loadLocal();
 
-        if (url.protocol !== "http:" && url.protocol !== "https:") {
-            return null;
-        }
-
-        return url.href;
-    } catch {
-        return null;
-    }
+    // After configs are loaded.
+    Message.init(GLOBAL);
 }
 
-/* ============================ Larger Image ============================ */
 
-function showLargeImage(imagePath) {
-    $('body').append('<div class="modal-overlay"><div class="modal-img"><img src="' + imagePath.replace("small","large") + '" /></div></div>');
+// Window events
+window.onclick = function(ev) {
+    let target = ev.target;
+
+    if (target.getAttribute("id") == "close") {
+        let window = $(target.parentElement.parentElement.parentElement);
+        window.fadeOut();
+    }
+
+    if (target.getAttribute("id") == "toggle") {
+        let window = $(target.parentElement.parentElement.parentElement).find(".content");
+        window.slideToggle();
+    }
 }
-
-$('div.image-gallery img').each(function (index) {
-    if ($(this).attr('onclick') != null) {                    
-        if ($(this).attr('onclick').indexOf("runThis()") == -1) {                        
-            $(this).click(function () {
-                $(this).attr('onclick');
-                var src = $(this).attr("src");
-                ShowLargeImage(src);
-            });
-        }
-    }
-    else {                    
-        $(this).click(function () {                        
-            var src = $(this).attr("src");
-            showLargeImage(src);
-        });
-    }
-});
-
-$('body').on('click', '.modal-overlay', function () {
-    $('.modal-overlay, .modal-img').remove();
-});
-
-/* ============================================================================= */
