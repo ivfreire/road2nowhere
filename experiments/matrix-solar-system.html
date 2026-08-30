@@ -10,10 +10,11 @@
         canvas {background-color: black;}
         div#controls {
             position: absolute;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid #3ff393;
             bottom: 8px;
             left: 8px;
-            color: white;
+            color: #3ff393;
             padding: 16px;
             border-radius: 3px;
             font-family: monospace;
@@ -24,10 +25,21 @@
     <canvas id="canvas"></canvas>
     <div id="controls">
         <span>Controls:</span><br><br>
-        <b>Gravity contant: </b><span id="g">0</span><br>
+
+        <b>Time speed: </b><span id="_fps">1</span><br>
+        <input type="range" name="fps" id="fps" min="0" max="100" value="1"><br>
+
+        <b>Particle count: </b><span id="np">100</span><br>
+        <input type="range" name="particle-count" id="particle-count" max="10000" value="100"><br>
+        
+        <b>Gravity: </b><span id="g">0</span><br>
         <input type="range" name="gravity" id="gravity" max="1000000"><br>
+
+        <input type="button" value="reset" onclick="Sim.reset();">
     </div>
     <script>
+        let running = true;
+
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
 
@@ -36,21 +48,16 @@
         let v = [];
         let vh = 600;
         let G = 100;
+        let particleCount = 100;
+        let timeMultiplier = 1;
         const eps = 10;
 
         const controls = document.getElementById("controls");
 
-        function update_globals() {
-            G = controls.querySelector("#gravity").value;
-            controls.querySelector("#g").innerHTML = G;
-        }
-
-        controls.onmousemove = update_globals;
-
         const Sim = {
-            FPS: 24,
+            FPS: 10,
 
-            maxParticles: 1000,
+            maxParticles: particleCount,
             particleSize: 20,
             particles: [],
 
@@ -99,14 +106,22 @@
                         x, y, z,
                         
                         // velocity
-                        0,
+                        10 * Math.sign(Math.random() - 0.5),
                         -v0 * Math.cos(t) * Math.sign(x) * Math.sin(phi),
                         -v0 * Math.cos(t) * Math.sign(x) * Math.cos(phi),
 
                         // Acceleration
-                        0, 0, 0
+                        0, 0, 0,
+
+                        // Char
+                        Math.floor(Math.random() * Sim.characters.length), 0
                     ]);
                 }
+            },
+
+            reset: function() {
+                Sim.particles = [];
+                Sim.initParticles();
             },
 
             render: function(ctx) {
@@ -130,8 +145,13 @@
                     ctx.fillStyle = `hsl(${Math.floor((dist_c / 800) * 360) % 360}, 100%, 50%)`;
                     ctx.font = `${Math.floor(Sim.particleSize * vh / dist_v)}px sans-serif`;
                     
+                    if (p[10] > 1) { 
+                        p[10] = 0;
+                        p[9] = Math.floor(Math.random() * Sim.characters.length)
+                    }
+
                     ctx.fillText(
-                        Sim.characters[Math.floor(Math.random() * Sim.characters.length)],
+                        Sim.characters[p[9]],
                         (p[0] - v[0]) * vh / dist_v,
                         (p[1] - v[1]) * vh / dist_v
                     );
@@ -142,16 +162,38 @@
                     p[7] = -accelMagnitude * (p[1] / dist_c);
                     p[8] = -accelMagnitude * (p[2] / dist_c);
 
-                    p[3] += p[6] * dtime;
-                    p[4] += p[7] * dtime;
-                    p[5] += p[8] * dtime;
+                    p[3] += p[6] * dtime * timeMultiplier;
+                    p[4] += p[7] * dtime * timeMultiplier;
+                    p[5] += p[8] * dtime * timeMultiplier;
 
-                    p[0] += p[3] * dtime;
-                    p[1] += p[4] * dtime;
-                    p[2] += p[5] * dtime;
+                    p[0] += p[3] * dtime * timeMultiplier;
+                    p[1] += p[4] * dtime * timeMultiplier;
+                    p[2] += p[5] * dtime * timeMultiplier;
+
+                    p[10] += dtime * timeMultiplier;
                 });
             }
         }
+
+        function update_globals() {
+            Sim.maxParticles = controls.querySelector("#particle-count").value;
+            controls.querySelector("#np").innerHTML = Sim.maxParticles;
+
+            G = controls.querySelector("#gravity").value;
+            controls.querySelector("#g").innerHTML = G;
+
+            timeMultiplier = controls.querySelector("#fps").value / 10;
+            controls.querySelector("#_fps").innerHTML = timeMultiplier;
+        }
+
+        controls.onmousemove = update_globals;
+
+        canvas.addEventListener("wheel", function(ev) {
+            ev.preventDefault();
+
+            if (ev.deltaY > 0) vh *= 0.9;
+            if (ev.deltaY < 0) vh *= 1.1;
+        });
 
         window.onload = function() {
             canvas.width = window.innerWidth;
@@ -161,13 +203,21 @@
             ctx.translate(canvas.width / 2, canvas.height / 2);
 
             dtime = 1.0 / Sim.FPS;
-            
             v = [0, 0, 1000];
 
             update_globals();
-            Sim.initParticles();
 
-            setInterval(Sim.render, Sim.FPS, ctx)
+            Sim.initParticles();
+            Sim.render(ctx);
+
+            if (!running) {
+                ctx.fillStyle = "white";
+                ctx.font = "20px monospace";
+                ctx.textAlign = 'center';
+                ctx.fillText("Click to start", 0, -100);
+            } else {
+                setInterval(Sim.render, Sim.FPS, ctx);
+            }
         }
     </script>
 </body>

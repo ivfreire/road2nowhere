@@ -196,6 +196,16 @@ div.window > div.content {
 	color: var(--text-color);
 }
 
+div.window.embed > div.content {
+	padding: 0;
+	overflow: hidden;
+}
+
+div.window.embed iframe {
+	width: 100%;
+	height: 600px;
+	border: none;
+}
 
 
 div.widgets > div.widget:last-child {

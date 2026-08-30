@@ -12,6 +12,15 @@
 
 /* ================================================================ */
 
+span {
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 4px;
+}
+
+ul li::before {
+    content: "- ";
+}
+
 div.content-full {
     margin-top: 32px;
 }
@@ -29,6 +38,45 @@ div#message-writer {
     left: 0;
     animation: message-writer 200ms 5 ease-out;
 }
+
+div.updates > div p::before {
+    content: "- ";
+}
+
+div.updates > div {
+    border-bottom: 1px dotted var(--fg-color);
+}
+div.updates > div:last-of-type {border: none;}
+
+
+div.hooks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 16px 0;
+}
+
+div.hooks a {
+    display: block;
+    text-align: center;
+}
+
+div.hooks a div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+}
+
+div.hooks img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
 
 /* ================================================================ */
 
