@@ -71,6 +71,7 @@ allowed_extensions = {
     ".gif",
     ".webp",
     ".txt",
+    ".avif"
 }
 
 cwd = Path.cwd()
