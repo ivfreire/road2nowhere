@@ -1,0 +1,81 @@
+
+div.about div.info-card {
+    display: flex;
+    flex-direction: column;
+}
+
+div.about div.info-card > div {
+    display: flex;
+    flex-direction: row;
+}
+
+div.about div.info-card div.profile-pic {
+    text-align: center;
+}
+
+div.about div.info-card div.profile-pic img {
+    border-radius: 3px;
+}
+
+div.about div.info-card ul {
+    list-style-type: none;
+}
+
+div.about div.info-card ul li {
+    padding: 5px 0 5px 0;
+}
+div.about div.info-card ul li:before {
+    content: "➤ ";
+}
+
+div#blinkers {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+div#blinkers img {
+    width: 49.5%;
+}
+
+div#stamps {
+    display: block;
+    margin-top: 32px;
+}
+
+
+div.elements div.title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+div.elements div.title h3 {
+    font-size: 32px;
+}
+
+div.elements div.title img {
+    height: 62px;
+}
+
+
+div.gameteca {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+div.gameteca > div {
+    display: block;
+    width: 24.5%;
+}
+
+div.gameteca > div img {
+    width: 100%;
+    margin-bottom: 16px;
+}
